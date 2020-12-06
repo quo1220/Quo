@@ -1,23 +1,38 @@
 <div class="main user-show">
     <div class="container">
         <div class="user">
-            <h2>
+            <center><h2>
                 <%= @user.name%>
             </h2>
+            
             <img class="img-fluid" src="/online.png">
             <% if @user.id==@current_user.id%>
-            <%= link_to("modify user name", "/users/#{@user.id}/edit_name") %>
+            <div class="col-md-8">
+            <a type="button" href="/users/<%=@user.id%>/edit_name" 
+                                  class= "btn btn-primary">
+              Modify user name
+            </a>
+            <a type="button" href="/users" 
+                                data-toggle="modal" data-target="#deleteUser" class= "btn btn-danger">
+              Cancel my account
+            </a>
+          </div></center>
+            <%#= link_to("modify user name", "/users/#{@user.id}/edit_name") %>
             <%#= button_to("delete", "/users/#{@user.id}",{method:"delete"}) %>
-            <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" },  method: :delete %>
+            <%#= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" },  method: :delete %>
             <%end%>
             <% unless @current_user == @user %>
+            
             <%if !@current_user.friends.include?(@user.id) && !@current_user.waitlist.include?(@user.id) %>
+            <a href="#" data-trigger="hover" data-toggle="popover" title="press the heart below to send a request to be a friend." data-content="Sample Paragraph." data-placement="right" >Friendship request</a>
             <%= button_to("/friendships/#{@user.id}/send_request",{method: "post"})do %>
             <span class="fa fa-heart like-btn"></span>
             <% end %>
             <%elsif @current_user.waitlist.include?(@user.id) %>
-            <%= "waiting a response.."%>
+            <a href="#" data-trigger="hover" data-toggle="popover" title="You have already sent a request to this user." data-content="Sample Paragraph." data-placement="right" >Need to wait</a>
+            <p><%= "waiting a response.."%></p>
             <%else%>
+            <a href="#" data-trigger="hover" data-toggle="popover" title="press the heart below to cancel the friendship with this user." data-content="Sample Paragraph." data-placement="right" >Friendship cancelation</a>
             <%= button_to("/friendships/#{@user.id}/destroy",{method: "delete"})do %>
             <span class="fa fa-heart unlike-btn"></span>
             <% end %>
@@ -34,4 +49,25 @@
             <% end %>
         </div>
     </div>
+</div>
+<div class="modal fade" tabindex="-1" id="deleteUser" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Quo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete your account?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger">
+          <%= link_to("Yes", "/users",{method:"delete",
+        class: 'css_class', style: 'color:#FFFFFF'}) %></button>
+      </div>
+    </div>
+  </div>
 </div>

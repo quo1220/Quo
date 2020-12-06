@@ -1,34 +1,47 @@
 <div class="main posts-show">
-  <div class="container">
-    <div class="posts-show-item">
-      <div class="post-info">
-        <p><%= "posted by: "%>
-          <%= link_to(@user.name, "/users/#{@user.id}")%></p>
-        <p><%= "title: #{@post.title}"%></p>
-        <p><%= "detail: #{@post.detail}"%></p>
-        <p><%= "type of post: #{@postType.name}"%></p>
-      </div>
-      <div class="post-menus">
-        <% if @post.user_id == @current_user.id %>
-          <%= link_to("modify", "/posts/#{@post.id}/edit") %>
-          <%= button_to("delete", "/posts/#{@post.id}",{method:"post"}) %>
-        <%end%>
-        <div class="posts-index-item">
-          <%= form_tag("/comments/#{@cid}/create_r") do %>
-            <p><%="reply to: #{@to_reply.message}"%></p>
-            <% @post.comments.each do |comment|%>
-              <% if comment.comment_id.to_i == @cid.to_i %>
-                <%= link_to(" =>#{comment.message}","/users/#{comment.user_id}")%>
-                <p></p>
-              <% end %>
-            <% end%>
-            <p>reply</p>
-            <textarea name="message" required="true"></textarea>
-            <p></p>
-            <input type="submit" value="send">
-          <%end%>
+    <div class="container">
+        <div class="posts-show-item">
+            <div class="post-info">
+                <dl class="row">
+                    <dt class="col-sm-3">Posted by: </dt>
+                    <dt class="col-sm-9">
+                        <%= link_to(@user.name, "/users/#{@user.id}")%></dt>
+                    <dt class="col-sm-3">Title: </dt>
+                    <dt class="col-sm-9">
+                        <%= @post.title%></dt>
+                    <dt class="col-sm-3">Detail: </dt>
+                    <dt class="col-sm-9">
+                        <%= @post.detail%></dt>
+                    <dt class="col-sm-3">Category: </dt>
+                    <dt class="col-sm-9">
+                        <%= @postType.name%></dt>
+                </dl>
+            </div>
+            <div class="post-menus">
+                <% if @post.user_id == @current_user.id %>
+                <%= link_to("modify", "/posts/#{@post.id}/edit") %>
+                <%= button_to("delete", "/posts/#{@post.id}",{method:"post"}) %>
+                <%end%>
+                <div class="posts-index-item">
+                    <%= form_tag("/comments/#{@cid}/create_r") do %>
+                    <dl class="row">
+                        <dt class="col-sm-3">Reply to: </dt>
+                        <dt class="col-sm-9">
+                            <%= @to_reply.message%></dt>
+                    </dl>
+                    <% @post.comments.each do |comment|%>
+                    <% if comment.comment_id.to_i == @cid.to_i %>
+                    <%= link_to(" =>#{comment.message}","/users/#{comment.user_id}")%>
+                    <p></p>
+                    <% end %>
+                    <% end%>
+                    <label　for="message">message</label>
+                    <textarea class="form-control" name="message" required="true"></textarea>
+                    <p></p>
+                    <input class="form-control2" type="submit" value="send">
+                    <%end%>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

@@ -2,19 +2,20 @@
     <div class="container">
         <div class="posts-show-item">
             <div class="post-info">
-                <p>
-                    <%= "posted by: "%>
-                    <%= link_to(@user.name, "/users/#{@user.id}")%>
-                </p>
-                <p>
-                    <%= "title: #{@post.title}"%>
-                </p>
-                <p>
-                    <%= "detail: #{@post.detail}"%>
-                </p>
-                <p>
-                    <%= "type of post: #{@postType.name}"%>
-                </p>
+                <dl class="row">
+                    <dt class="col-sm-3">Posted by: </dt>
+                    <dt class="col-sm-9">
+                        <%= link_to(@user.name, "/users/#{@user.id}")%></dt>
+                    <dt class="col-sm-3">Title: </dt>
+                    <dt class="col-sm-9">
+                        <%= @post.title%></dt>
+                    <dt class="col-sm-3">Detail: </dt>
+                    <dt class="col-sm-9">
+                        <%= @post.detail%></dt>
+                    <dt class="col-sm-3">Category: </dt>
+                    <dt class="col-sm-9">
+                        <%= @postType.name%></dt>
+                </dl>
             </div>
             <div class="post-menus">
                 <% if @post.user_id == @current_user.id %>
@@ -26,7 +27,8 @@
                 <div class="posts-index-item">
                     <%= link_to(comment.message,"/users/#{comment.user.id}")%>
                     <div class="reply">
-                        <%= link_to("reply","/comments/#{comment.id}/reply")%>
+                        <span class="fa fa-reply"></span>
+                        <%= link_to(": reply","/comments/#{comment.id}/reply")%>
                         <% if comment.user_id == @current_user.id %>
                         <%= link_to("modify comment", "/comments/#{comment.id}/edit") %>
                         <%= button_to("delete comment", "/comments/#{comment.id}",{method:"post"}) %>
@@ -35,7 +37,10 @@
                 </div>
                 <% end %>
                 <% end%>
-                <%= link_to("comment", "/posts/#{@post.id}/comments/new") %>
+                <div class="reply">
+                    <span class="fa fa-envelope"></span>
+                    <%= link_to(": comment", "/posts/#{@post.id}/comments/new") %>
+                </div>
             </div>
         </div>
     </div>

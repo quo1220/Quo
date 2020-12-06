@@ -71,11 +71,11 @@
   font-weight: 200;
 }
 
-.user span {
-  color: #afb6bf;
-  font-weight: 200;
-  padding: 0 6px 0 8px;
-}
+//.user span {
+//  color: #afb6bf;
+//  font-weight: 200;
+//  padding: 0 6px 0 8px;
+//}
 
 .user-tabs {
   margin-top: 40px;
@@ -107,4 +107,19 @@
 /* users/new, users/edit ================================ */
 .users-form input {
   margin-bottom: 15px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    color: red;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-color: white;
 }

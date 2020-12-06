@@ -23,6 +23,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <% if @current_user %>
@@ -37,7 +38,9 @@
                         <a class=navbar-brand href="/friendships/<%=@current_user.id%>/index">Friends</a>
                     </li>
                     <li class="nav-item">
-                        <a class=navbar-brand href="/friendships/<%=@current_user.id%>/requested">Requests</a>
+                        <a class=navbar-brand href="/friendships/<%=@current_user.id%>/requested">Requests
+                            <span class="badge">
+                                <%=@current_user.requests.count%></span></a>
                     </li>
                     <li class="nav-item">
                         <a class=navbar-brand href="/posts/new">New post</a>
@@ -85,11 +88,12 @@
                 </li>
                 <li class="nav-item">
                     Copyright (c) 2017 by yoksel <a href="http://codepen.io/yoksel/pen/muxnF">
-                    Fork of an original work by yoksel <a href="http://codepen.io/yoksel/pen/eolqw">
+                        Fork of an original work by yoksel <a href="http://codepen.io/yoksel/pen/eolqw">
                 </li>
             </ul>
         </div>
     </nav>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

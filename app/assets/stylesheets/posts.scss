@@ -29,12 +29,20 @@
   padding: 20px 30px;
   background-color: #e6ffe6;
   box-shadow: 0 2px 6px #c1ced7;
+  opacity: 0.8;
 }
 
 
 .reply {
 	float: right;
+
 }
+
+.reply a{
+  float: right;
+  color: #006400;
+}
+
 
 .choose_the_post_type {
   color: #3ecdc6;
