@@ -2,8 +2,18 @@
 .posts-index-item {
   padding: 20px 30px;
   background-color: white;
+  opacity: 0.8;
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
+}
+
+.post-title a {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.post-title a:hover {
+  color: #6495ED;
 }
 
 

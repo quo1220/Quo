@@ -13,51 +13,6 @@
  *= require_tree .
  *= require_self
  */
- $bgcolor: #F2DBA5;
-$transparent: rgba(255, 255, 255, 0);
 
-$color-1: white;
-$color-2: #B3CCA2;
-$color-2-1: transparentize($color-2, .3);
-$color-3: #CCC394;
-$color-3-1: transparentize($color-3, .3);
-
-$size: 3em;
-$big-size: $size*2;
-$min: $size*.5;
-$max: $size*.6;
-
-HTML {
-  height: 100%;
-  }
-BODY {
-  background: 
-    radial-gradient(circle,
-      $color-2 $min/2,
-      $transparent $min/2, $transparent $min,
-      $color-3-1 $min, $color-3-1 $max, 
-      $transparent $max
-      ) 0 0,
-    radial-gradient(circle,
-      $color-3 $min/2,
-      $transparent $min/2, $transparent $min,
-      $color-2-1 $min, $color-2-1 $max, 
-      $transparent $max
-      ) $size $size,
-    
-    radial-gradient(circle,
-      $color-2-1 $min/4,
-      $transparent $min/4
-      ) $size 0,
-    radial-gradient(circle,
-      $color-3-1 $min/5,
-      $transparent $min/5
-      ) 0 $size
-    ;
-  background-size:  $big-size $big-size;
-  background-color: $bgcolor;
-  background-repeat: repeat;
-  font: 16px/2 'Trebuchet MS', Verdana, sans-serif;
-  }
 
  

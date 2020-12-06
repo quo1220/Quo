@@ -1,9 +1,13 @@
 <div class="main meals-index">
     <div class="container">
-        <h1 class="users-heading">all posts</h1>
+        <center><h1 class="users-heading">shared thoughts</h1></center>
+        <img class="img-fluid" src="/2cat.png">
         <% @posts.each do |post|%>
         <div class="posts-index-item">
-            <%= link_to(post.title,"/posts/#{post.id}")%>
+            <div class="post-title">
+                <%= link_to(post.title,"/posts/#{post.id}")%>
+            </div>
+            
             <div class="post-user-name">
                 <%= link_to(post.user.name,"/users/#{post.user.id}")%>
             </div>
