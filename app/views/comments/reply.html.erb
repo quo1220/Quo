@@ -19,6 +19,14 @@
             </div>
             <div class="post-menus">
                 <% if @post.user_id == @current_user.id %>
+                <div>
+                    <a type="button" href="/posts/<%=@post.id%>/edit" class="btn btn-info">
+                        Modify post
+                    </a>
+                    <a type="button" href="/posts/<%=@post.id%>" data-toggle="modal" data-target="#deletePost" class="btn btn-danger">
+                        Delete post
+                    </a>
+                </div>
                 <%= link_to("modify", "/posts/#{@post.id}/edit") %>
                 <%= button_to("delete", "/posts/#{@post.id}",{method:"post"}) %>
                 <%end%>
@@ -41,6 +49,27 @@
                     <input class="form-control2" type="submit" value="send">
                     <%end%>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="deletePost" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Quo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete your post?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger">
+                    <%= link_to("Yes", "/posts/#{@post.id}",{method:"delete",
+                    class: 'css_class', style: 'color:#FFFFFF'}) %></button>
             </div>
         </div>
     </div>

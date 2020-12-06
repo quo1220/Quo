@@ -59,7 +59,7 @@ class CommentsController < ApplicationController
         @comment.message = params[:message]
         if @comment.save
           flash[:notice]= "Modified successfully!"
-          redirect_to("/meals")
+          redirect_to("/posts")
         else
           show_error("Save function went wrong..try again!","comments/#{@comment.id}/edit")
         end

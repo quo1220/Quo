@@ -7,4 +7,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :comment, class_name: "Comment", optional: true
   has_many :comments,  class_name: "Comment",foreign_key: "comment_id", dependent: :destroy
+
+  
+
 end

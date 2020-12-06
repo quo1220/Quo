@@ -57,9 +57,10 @@ class PostsController < ApplicationController
     @postType = PostType.find_by(name: allowed_params["post_type"])
     @post.post_type=@postType.id
     @post.user_id= @current_user.id
+    
     if @post.save
       flash[:notice]= "Post has been modified successfully!"
-      redirect_to("/posts/index")
+      redirect_to("/posts/#{@post.id}")
     else
       @post = Post.find_by(id: params[:id])
       #render("posts")
