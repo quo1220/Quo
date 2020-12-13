@@ -27,37 +27,44 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <% if @current_user %>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/users/<%=@current_user.id%>">
-                            <%=@current_user.name%></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/posts">Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/friendships/<%=@current_user.id%>/index">Friends</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/friendships/<%=@current_user.id%>/requested">Requests
-                            <span class="badge">
-                                <%=@current_user.requests.count%></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/posts/new">New post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/logout">Logout</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/users/<%=@current_user.id%>">
+                                <%=@current_user.name%></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/posts">Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/links/index">Suggested link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/friendships/<%=@current_user.id%>/index">Friends</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/friendships/<%=@current_user.id%>/requested">Requests
+                                <span class="badge">
+                                    <%=@current_user.requests.count%></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/posts/new">New post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/links/new">Add link</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/logout">Logout</a>
+                        </li>
                     <% else %>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/signup">Sign up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=navbar-brand href="/login">Login</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/signup">Sign up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=navbar-brand href="/login">Login</a>
+                        </li>
                     <% end %>
                 </ul>
             </div>

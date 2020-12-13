@@ -17,6 +17,14 @@
                         <%= @postType.name%></dt>
                 </dl>
             </div>
+             <div class="reply">
+                    <span class="fa fa-bell"></span>
+                    <%= link_to(": suggest ", "/posts/#{@post.id}/suggests/new") %>
+                </div>
+                <div class="reply">
+                    <span class="fa fa-comment-o"></span>
+                    <%= link_to(": comment", "/posts/#{@post.id}/comments/new") %>
+                </div>
             <div class="post-menus">
                 <% if @post.user_id == @current_user.id %>
                 <div>
@@ -31,6 +39,7 @@
                 <%#= link_to("modify post", "/posts/#{@post.id}/edit") %>
                 <%#= button_to("delete post", "/posts/#{@post.id}",{method:"delete"}) %>
                 <%end%>
+
                 <% @post.comments.each do |comment|%>
                 <% if comment.comment_id.blank? %>
                 <div class="posts-index-item">
@@ -57,10 +66,32 @@
                 </div>
                 <% end %>
                 <% end%>
-                <div class="reply">
-                    <span class="fa fa-envelope"></span>
-                    <%= link_to(": comment", "/posts/#{@post.id}/comments/new") %>
-                </div>
+                <% @post.suggests.each do |suggest|%>
+                    <div class="posts-index-item">
+                        <div class="post-title">
+                        <%= link_to(suggest.name,"/users/#{suggest.user.id}")%></div>
+                        <p>
+                            <%=suggest.about %>
+                        </p>
+                        <div class="reply">
+                          
+                            <% if suggest.suggest_type=="1"%>
+                                <span class="fa fa-film"></span>
+                            <% elsif suggest.suggest_type=="2"%>
+                                <span class="fa fa-book"></span>
+                            <% elsif suggest.suggest_type=="3"%>
+                                <span class="fa fa-quote-left"></span>
+                            <% elsif suggest.suggest_type=="4"%>
+                                <span class="fa fa-music"></span>
+                            <% elsif suggest.suggest_type=="5"%>
+                                <span class="fa fa-fighter-jet"></span>
+                            <%end%>
+                            <%=SuggestType.find(suggest.suggest_type).name %>
+                        </div>
+                       
+                    </div>
+                <% end %>
+               
             </div>
         </div>
     </div>

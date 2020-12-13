@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  
+  get 'suggests/index'
+  namespace :links do
+    get "/index" ,action: "index"
+    get "/future_plan" ,action: "future_plan"
+    get "/health" ,action: "health"
+    get "/relationship" ,action: "relationship"
+    get "/self_confidence" ,action: "self_confidence"
+    get "/self_progress" ,action: "self_progress"
+    get "/society" ,action: "society"
+    get "/new" ,action: "new"
+    post "/create" ,action: "create"
+  end
   #get 'posts/index'
   #devise_for :users
  # get '/'=> 'home#index'
@@ -32,6 +45,9 @@ Rails.application.routes.draw do
     post "/:id/send_request" ,action: "send_request"
     get "/thanks" ,action: "thanks"
   end
+
+  get "posts/:id/suggests/new" => "suggests#new"
+  post "posts/:id/suggests/create" => "suggests#create"
  
 
   namespace :comments do

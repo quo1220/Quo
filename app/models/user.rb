@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :friendships, foreign_key: :receiver_id, dependent: :destroy
 
   has_many :walls, foreign_key: :sender_id, dependent: :destroy
+  has_many :links, dependent: :destroy
+
+  has_many :suggests, dependent: :destroy
 
   def friends
   	@friendships1= Friendship.where(user_id: self.id, confirmed: true)

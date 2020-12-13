@@ -1,0 +1,24 @@
+<div class="main posts-new">
+    <div class="container">
+        <h1 class="users-heading">Create a suggestion</h1>
+        <div class="form">
+            <div class="form-body">
+                <% @suggest.errors.full_messages.each do |message| %>
+                <div class="form-error">
+                    <%= message %>
+                </div>
+                <% end %>
+                <%= form_for @suggest,:url => {controller: "suggests", action: "create"}, multipart: true do |f| %>
+                <p>type</p>
+                <%= f.select(:suggest_type, @names, {}, { :class => 'choose_the_post_type' }) %>
+                <p>title of the content</p>
+                <%= f.text_field :name%>
+                <p>detail or reason you wish to suggest</p>
+                <%= f.text_area :about%>
+                <p></p>
+                <%= f.submit%>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

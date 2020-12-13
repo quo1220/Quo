@@ -1,0 +1,2 @@
+class SuggestType < ApplicationRecord
+end

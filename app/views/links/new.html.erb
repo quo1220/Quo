@@ -1,0 +1,26 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="users-heading">New link to suggest</h1>
+    <div class="form">
+      <div class="form-body">
+        <% @link.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= form_for @link,:url => {controller: "links", action: "create"}, multipart: true do |f| %>
+          <p>title</p>
+          <%= f.text_field :title%>
+          <p>url</p>
+          <%= f.text_field :url%>
+          <p>detail</p>
+          <%= f.text_area :about%>
+          <p>type</p>
+          <%= f.select(:link_type, @names, {}, { :class => 'choose_the_post_type' }) %>
+          <p></p>
+          <%= f.submit%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
