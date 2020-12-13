@@ -10,10 +10,10 @@
             <button onclick="location.href='/links/relationship'" type="button" class="btn btn-outline-warning">Relationship</button>
             <button onclick="location.href='/links/future_plan'" type="button" class="btn btn-outline-info">Future plan</button>
             <button onclick="location.href='/links/health'" type="button" class="btn btn-outline-light">Health</button>
-           
+         
         </center>
-        </center>
-        <img class="img-fluid" src="/book.png">
+        <%img_name="/#{ltype}.png"%>
+        <img class="img-fluid" src=<%=img_name%>>
         <% @links.each do |link|%>
         <div class="posts-index-item">
             <div class="post-title">
