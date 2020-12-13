@@ -8,12 +8,12 @@
                     <% if wall.sender == @current_user %>
                     <div class="reply">
                         <h6>
-                            <%=wall.message %>
+                            <%=wall.message ^ @key  %>
                         </h6>
                     </div>
                     <% else %>
                     <h6>
-                        <%=wall.message %>
+                        <%=wall.message ^ @key %>
                     </h6>
                     <% end %>
                 </div>
